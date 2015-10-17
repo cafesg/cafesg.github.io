@@ -2,5 +2,58 @@
 layout: cold
 ---
 
+{% for post in paginator.posts %}
 
+ <article class="box post post-excerpt">
+    <header>
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+        <p>{{ post.subtitle }}</p>
+    </header>
+    <div class="info">
+        <span class="date">
+            <span class="month">Jul<span>y</span></span>
+            <span class="day">14</span>
+            <span class="year">, 2014</span>
+        </span>
+       
+        <ul class="stats">
+            <li><a href="#" class="icon fa-comment">16</a></li>
+            <li><a href="#" class="icon fa-heart">32</a></li>
+            <li><a href="#" class="icon fa-twitter">64</a></li>
+            <li><a href="#" class="icon fa-facebook">128</a></li>
+        </ul>
+    </div>
+    {{ post.excerpt }}
+</article>
+{% endfor %}
+
+<!-- Pagination -->
+<div class="pagination">
+    <!--<a href="#" class="button previous">Previous Page</a>-->
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="button previous">Previous</a>
+    {% else %}
+    <!-- <span class="button previous">Previous</span> -->
+    {% endif %}
+
+    <div class="pages">
+
+    {% for page in (1..paginator.total_pages) %}
+        <a {% if page == paginator.page %} class="active" {% endif %} 
+        {%if page == 1 %} 
+            href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" 
+        {% else %} 
+            href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" 
+        {% endif %} >
+            {{ page }}
+        </a>
+        
+    {% endfor %}
+    </div>
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="button next">Next</a>
+    {% else %}
+    <!-- <span class="button next">Next</span> -->
+    {% endif %}
+</div>
 
