@@ -4,7 +4,7 @@ markdown: redcarpet
 
 permalink: /:title/
 
-paginate: 1
+paginate: 5
 paginate_path: "/trang-:num/"
 
 baseurl: ""
