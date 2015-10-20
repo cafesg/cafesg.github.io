@@ -1,6 +1,8 @@
 title: CafeSG Team Blog
 
 markdown: redcarpet
+encoding:     "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 permalink: /:title/
 
